@@ -1,0 +1,1 @@
+O projeto Fire 0 fo criado com o intuito de auxiliar na análise de chances de incêndio em áreas florestais, isso a partir de dados meteorológicos sobre o clima e variações atmosféricas.

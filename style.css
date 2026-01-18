@@ -1,41 +1,45 @@
+/* Importando uma fonte mais moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
-    background-color: #25282b;
-    font-family: sans-serif;
-    color: aliceblue;
+    background-color: #121416; /* Fundo mais profundo */
+    font-family: 'Poppins', sans-serif; /* Fonte mais elegante que sans-serif padrão */
+    color: #e0e6ed;
     margin: 0;
+    line-height: 1.6;
 }
 
+/* --- Cabeçalho --- */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    background-color: #1a1c1e;
-    border-bottom: 3px solid #e63946;
+    padding: 10px 5%;
+    background-color: rgba(26, 28, 30, 0.95);
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    border-bottom: 2px solid #e63946;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-
 .container-logo {
-    width: 120px;          
-    height: 120px;       
-    border: 2px solid white;
-    border-radius: 20px;  
-    overflow: hidden;      
+    width: 80px; /* Reduzi um pouco para ficar mais elegante */
+    height: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #fff;
 }
-
 
 .imagem-adaptavel {
-    width: 170%;
-    height: 170%;
-    object-fit: contain;   
-    padding: 5px;          
+    width: 190%;
+    height: 190%;
+    object-fit: cover;
 }
-
 
 .logo-area {
     display: flex;
@@ -45,31 +49,84 @@ body {
 
 .logo-text h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
 }
 
 .logo-text h3 {
     margin: 0;
+    font-size: 0.9rem;
     font-weight: 300;
+    text-transform: uppercase;
     color: #ffb703;
 }
 
-
-.nav-menu {
-    display: flex;
-    gap: 15px;
-}
-
+/* --- Menu de Navegação --- */
 .nav-menu button {
     background: transparent;
-    border: 1px solid transparent;
-    color: white;
-    padding: 8px 15px;
+    border: none;
+    color: #cbd5e0;
+    padding: 10px 20px;
+    font-weight: 500;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+}
+
+.nav-menu button:hover {
+    color: #e63946;
 }
 
 .btn-download {
     background-color: #e63946 !important;
-    border-radius: 5px !important;
+    color: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* --- Conteúdo Principal --- */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.title {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.03); /* Card sutil */
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe visual abaixo do título */
+.title h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #e63946;
+    border-radius: 2px;
+}
+
+.title p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #a0aec0;
+    border-left: 3px solid rgba(255, 183, 3, 0.5); /* Detalhe lateral nos itens */
+    padding-left: 15px;
 }

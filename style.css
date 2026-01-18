@@ -21,6 +21,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+/* --- Fixando o cabeçalho --- */
+    position: sticky; 
+    top: 0;           
+    z-index: 1000; 
+    backdrop-filter: blur(8px);
 }
 
 .container-logo {

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css"> 
+        <title>Fire 0 | Home</title>
+    </head>
+    <body>
+        <header class="main-header">
+            <div class="logo-area">
+                <div class="container-logo">
+                    <img src="/static/Imagens/logo.jpg" alt="Logo Fire 0" class="imagem-adaptavel">
+                </div>
+                
+                <div class="logo-text">
+                    <h1>Fogo 0</h1>
+                    <h3>Monitoramento contra incêndios</h3>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <form action="/cadastrar-email" method="post" id="form-inscricao" style="text-align: center; margin-top: 20px;">
+                    <input type="email" name="email" id="email-input" placeholder="Digite seu e-mail" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 250px; display: none;">
+                    <button type="button" id="btn-acao" class="btn-download" onclick="mostrarCampo()">Inscreva-se</button>
+                </form>
+
+                {% if mensagem_email %}
+                    <p style="color: #ffb703; font-weight: bold; text-align: center;">
+                        {{ mensagem_email }}
+                    </p>
+                {% endif %}
+                
+            </nav>
+        </header>
+        <main>
+            <div class="title">
+                <h1> Sobre o Fire 0:</h1>
+                <p>- O projeto Fire 0 tem como intuito a preservação contra queimadas do Parque Estadual do Juquery.</p>
+                <p>- Funcionalidades baseadas em indicadores climáticos, como umidade e índices pluviométricos.</p>
+                <p>- Inscreva-se para receber alertas e orientações para sua área</p>
+            </div>
+
+           {% if resultado %}
+                <div id="modal-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+                    
+                    <div class="alerta-popup" style="background-color: rgba(0,0,0,10); color: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 500px; width: 90%; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);">
+                        
+                        <button onclick="document.getElementById('modal-container').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
+                        
+                        <h2 style="margin-top: 0; text-transform: uppercase; color: {{ cor }};">Grau de Perigo: {{ grau }}</h2>
+                        <p style="font-size: 1.2rem;"><strong>Índice FMA:</strong> {{ resultado }}</p>
+                        <p><strong>Cenário:</strong> {{ cenario }}</p>
+                        
+                        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 20px 0;">
+                        
+                        <p style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px;">
+                            <strong>Recomendação:</strong><br>{{ acao }}
+                        </p>
+
+                        <button onclick="document.getElementById('modal-container').style.display='none'" style="margin-top: 20px; padding: 10px 30px; border-radius: 50px; border: none; background: white; color: black; font-weight: bold; cursor: pointer;">Entendido</button>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if erro %}
+                <div class="erro" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-top: 20px;">
+                    {{ erro }}
+                </div>
+            {% endif %}
+            
+        </main>
+            <form action="/calcular" method="post" style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="btn-verificar">Verificar Risco de Incêndio</button>
+            </form>
+
+            <script>
+                function mostrarCampo() {
+                    const input = document.getElementById('email-input');
+                    const botao = document.getElementById('btn-acao');
+
+                    // Se o input estiver escondido, ele aparece
+                    if (input.style.display === 'none') {
+                        input.style.display = 'inline-block'; // Faz o campo aparecer
+                        botao.innerText = 'Enviar Cadastro'; // Muda o texto do botão
+                        input.focus(); // Coloca o cursor dentro do campo automaticamente
+                    } else {
+                        // Se o campo já estiver visível, o botão agora envia o formulário
+                        if (input.value !== "") {
+                            document.getElementById('form-inscricao').submit();
+                        } else {
+                            alert("Por favor, digite um e-mail.");
+                        }
+                    }
+                }
+            </script>
+    </body>
+</html>

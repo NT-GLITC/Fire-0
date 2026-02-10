@@ -15,8 +15,6 @@ O projeto foi construído utilizando tecnologias modernas para garantir leveza e
 * **Comunicação:** Protocolo SMTP (`smtplib`)
 * **Frontend:** HTML5, CSS3 (Animações Keyframes) e JavaScript Vanilla
 
-
-
 ---
 
 ## 🚀 Funcionalidades Principais
@@ -63,5 +61,4 @@ pip install flask requests
 ```
 python main.py
 ```
-
 Acesse o sistema em seu navegador: http://127.0.0.1:5000
